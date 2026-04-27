@@ -12,7 +12,7 @@ Frontend: Construir uma interface limpa e responsiva utilizando NextJS 16, ShadC
 - Formulários interativos para ações de depósito e saque.
 - Uma tabela de histórico de transações.
 
-Conteinerização: conteinerizar toda a demonstração (frontend, backend e banco de dados) para que seja possível subir a stack via docker compose.
+Containerização: containerizar toda a demonstração (frontend, backend e banco de dados) para que seja possível subir a stack via docker compose.
 
 Estilo de Programação: utilize a abordagem TDD para um estilo limpo em toda a base de código;
 
