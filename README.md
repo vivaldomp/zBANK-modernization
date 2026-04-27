@@ -303,5 +303,7 @@ INTERNAL_API_URL=http://localhost:3001 bun run dev:web
 
 - **Sistema COBOL original (zBANK)** — Benjamin Linnik, Nicklas V. e Henrik G., disciplina *Enterprise Mainframe Computing*. Repositório original: [github.com/BenLinnik/zBANK](https://github.com/BenLinnik/zBANK).
 - **Fork utilizado neste projeto** (submódulo `zBANK/`) — [github.com/Nantero1/zBANK](https://github.com/Nantero1/zBANK), que serviu de base para análise do código fonte COBOL, dos dados de seed VSAM e do desenho das telas BMS, **subsidiando os testes e a engenharia reversa da lógica de negócio** que foi recriada nesta versão TypeScript.
+ Especificação de design via Superpowers.
+- Claude Code com Opus 4.7.
 
 > Spec de design: [`docs/superpowers/specs/2026-04-26-zbank-modernization-design.md`](docs/superpowers/specs/2026-04-26-zbank-modernization-design.md)
