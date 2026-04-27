@@ -1,0 +1,24 @@
+{
+  "name": "zbank-modernization",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "bun --filter @zbank/api dev",
+    "dev:web": "bun --filter @zbank/web dev",
+    "build": "bun --filter '*' build",
+    "test": "bun --filter '*' test",
+    "test:unit": "bun --filter '@zbank/core' --filter '@zbank/application' test",
+    "db:migrate": "bun --filter @zbank/db migrate",
+    "db:seed": "bun --filter @zbank/db seed",
+    "typecheck": "bun --filter '*' typecheck"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "@types/bun": "^1.1.14",
+    "vitest": "^2.1.9"
+  }
+}

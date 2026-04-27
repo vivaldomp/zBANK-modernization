@@ -1,0 +1,50 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: zbank
+      POSTGRES_PASSWORD: zbank
+      POSTGRES_DB: zbank
+    volumes:
+      - zbank-pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zbank"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://zbank:zbank@postgres:5432/zbank
+      API_PORT: "3001"
+      WEB_ORIGIN: http://localhost:3000
+      SESSION_SECRET: dev-secret-change-me
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "3001:3001"
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      INTERNAL_API_URL: http://api:3001
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+
+volumes:
+  zbank-pgdata:
